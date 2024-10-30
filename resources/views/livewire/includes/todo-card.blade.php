@@ -34,7 +34,7 @@
              <button x-data="{
                  payload: {
                      callback: () => $dispatch('delete-todo', { 'todo': {{ $todo->id }} }),
-                     html: 'You won\'t be able to revert this! <br> <strong> {{ $todo->name }} </strong>',
+                     html: 'You won\'t be able to revert this!<br />Todo - <strong>{{ e($todo->name) }}</strong>',
                  }
              }" @click="$dispatch('swal', { type: 'confirmDialog', payload})"
                  class="text-sm text-red-500 font-semibold rounded hover:text-teal-800 mr-1">
