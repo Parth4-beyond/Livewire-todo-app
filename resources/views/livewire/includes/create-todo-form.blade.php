@@ -16,12 +16,13 @@
             <label for="name" class="block text-sm font-medium text-gray-900 dark:text-white">*
                 Todo </label>
             <input wire:model="form.name" type="text" id="name" placeholder="Todo.."
-                class="bg-gray-100  text-gray-900 text-sm rounded block w-full p-2.5">
+                class="bg-gray-100 text-gray-900 text-sm rounded block w-full p-2.5
+                {{ $errors->get('form.name') ? 'border-red-500' : 'border-gray-300' }}" />
             @error('form.name')
                 <span class="text-red-500 text-xs mt-2 block ">{{ $message }}</span>
             @enderror
         </div>
-        <div class="mt-2">
+        <div class="mt-3">
             <button type="submit" wire:loading.remove wire:target="create"
                 class="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Create
                 +</button>

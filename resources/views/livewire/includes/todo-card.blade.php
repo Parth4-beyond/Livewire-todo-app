@@ -11,7 +11,8 @@
              @if ($editMode)
                  <div>
                      <input wire:model="form.editedName" type="text"
-                         class="bg-gray-100  text-gray-900 text-sm rounded block w-full p-2.5" />
+                         class="bg-gray-100  text-gray-900 text-sm rounded block w-full p-2.5
+                            {{ $errors->get('form.editedName') ? 'border-red-500' : 'border-gray-300' }}" />
                      @error('form.editedName')
                          <span class="mt-1 text-red-500 text-xs block">{{ $message }}</span>
                      @enderror
@@ -23,7 +24,7 @@
              @endif
          </div>
          <div class="flex items-center space-x-2">
-             <button wire:click="edit({{ $todo }})"
+             <button wire:click="edit({{ $todo }})" title="Edit Todo"
                  class="text-sm text-teal-500 font-semibold rounded hover:text-teal-800">
                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-4 h-4">
@@ -37,7 +38,7 @@
                      html: 'You won\'t be able to revert this!<br />Todo - <strong>{{ e($todo->name) }}</strong>',
                  }
              }" @click="$dispatch('swal', { type: 'confirmDialog', payload})"
-                 class="text-sm text-red-500 font-semibold rounded hover:text-teal-800 mr-1">
+                 class="text-sm text-red-500 font-semibold rounded hover:text-teal-800 mr-1" title="Delete Todo">
                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-4 h-4">
                      <path stroke-linecap="round" stroke-linejoin="round"
